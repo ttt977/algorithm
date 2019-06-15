@@ -1,0 +1,56 @@
+test case.
+기 구현된 함수를 보고, 원하는 시나리오대로 실행시켜줘야 함.(실행함수 원하는 횟수(input 갯 수) 여러 번 호출,,
+
+dp는 n의 경우 먼저 생각...n-1,,n-2 n을 포함하는지 마는지..등
+
+vector pair 선언법..비교함수.(통신버퍼설계 문제 다시 풀어보기)
+
+기본 math 함수
+<cmath> / 올림 ceil(n), 내림 floor(n), 반올림 floor(n+0.5), 절대값 abs(n)
+
+
+다익스트라 다시 풀어보기
+
+overflow 조심,,문제 좀 잘 읽어라.
+정답관련 처리할 때 변수/배열 크기 잘 생각해야함
+
+https://github.com/cpuu/LGSWPCT
+
+계단오르기
+n번 째 계단은 무조건 밟아야 하므로 n-1을 밟고오는 경우와 n-1를 밟지 않고 오는 경우가 있다.
+n-1를 밟을 경우 n-2는 못 밟기 때문에 n-3까지의 최대 점수와
+n-1를 밟지 않을 경우 n-2까지의 최대 점수중 큰 것을 선택하는 점화식.
+MAX((Solve(n-3) + P[n-1] + P[n]), (Solve(n-2) + P[n]));
+
+보류 : 건물옥상정원(시간초과)
+
+두 정수 곱셈 후 overflow 확인 a*b=c if(c/b != a) overflow!!
+
+string find
+String::size_type n;
+str.find("haha",n); //str의 n 부터 "haha" 찾기. 찾으면 위치, 못 찾으면 string::npos return 됨.
+
+bfs는 최단 경로 탐색시 사용..(큐가 빌때까지 노드 큐에 넣고 다시 빼서 연결된 간선 정보 큐에 넣고 반복)
+ -> 미로 최단경로의 경우 pair(i,j,lvl)로 구현 필요..
+dfs는 스택활용..미로찾기 등
+플로이드 알고리즘 : 모든 쌍에 대해서 최소 비용구하기,,3중 for문 (V^3) 시간 복잡도.
+
+ccw 반시계방향 양수 / 시계방향 음수
+x1 x2 x3 x1
+y1 y2 y3 y1
+int a = x1 * y2 + x2 * y3 + x3 * y1;
+int b = y1 * x2 + y2 * x3 + y3 * x1;
+return a - b;
+
+typedef struct node *pnode;
+typedef struct node
+{
+	int data;
+	pnode leftnode;
+	pnode rightnode;	
+}node;
+vector<node> nv;
+
+test case 갯수가 있는 경우,,,tc 안에 풀이시 return 하지마라..;;
+
+LIS(Longegst Increasing Subsequence)..dp 대표적인 문제..
