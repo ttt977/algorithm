@@ -1,0 +1,63 @@
+#include <stdio.h>
+#define MAX(a,b) ((a)>(b)?(a):(b))
+
+int samgak[501][501];
+int maxv[501][501];
+int N=0;
+
+int solve(int i, int j)
+{
+	if(maxv[i][j] != -1)
+	 return maxv[i][j];
+	 
+	if( i<0 || j<0 )
+	 return 0;
+	 
+	if(i==0 && j==0)
+	{
+		return maxv[i][j]=samgak[i][j];
+	}
+	else
+	{		
+		if(j==0)
+			maxv[i][j]=samgak[i][j] + solve(i-1,j);
+		else
+		{		
+			maxv[i][j]=samgak[i][j] + MAX(maxv[i-1][j],solve(i-1,j-1));
+		}
+		solve(i,j-1);			
+	}	
+	return maxv[i][j];
+}
+
+int main()
+{
+	int i=0,j=0;
+	int max=0,tmp=0;
+	memset(samgak,0,sizeof(samgak));
+	memset(maxv,-1,sizeof(maxv));
+	
+	scanf("%d",&N);
+	
+	for(i=0;i<N;i++)
+	{
+		j=0;
+		do
+		{
+			scanf("%d",&(samgak[i][j++]));
+		}
+		while (getc(stdin) == ' ');
+	}
+	
+	solve(N-1,N-1);
+	
+	for(j=0;j<N;j++)
+	{
+		tmp = maxv[N-1][j];
+		if(tmp > max)
+		 max = tmp;
+	}	
+	
+	printf("%d\n",max);
+}
+
