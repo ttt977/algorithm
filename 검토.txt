@@ -96,4 +96,11 @@ vector<node> nv;
 
 test case 갯수가 있는 경우,,,tc 안에 풀이시 return 하지마라..;;
 
-LIS(Longegst Increasing Subsequence)..dp 대표적인 문제..
+LIS(Longest Increasing Subsequence)..dp 대표적인 문제..
+dp는 값을 처음부터 하나씩 쌓아가는 방향으로 식을 세워야 함.
+n-1의 해가 n의 해를 포함할 수 있도록...
+
+LCS(Longest Common Substring)
+1. String1[n], String2[k]가 같다면 : [n, k] == [n-1, k-1] + 1
+2. String1[n], String2[k]가 다르면 : [n, k] == [n-1, k]와 [n, k-1] 중 큰 값
+
